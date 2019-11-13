@@ -1,5 +1,7 @@
 from tkinter import*
 from math import*
+import time
+import threading
 w=Tk()
 w.title("My calculator")
 w.iconbitmap()
@@ -93,4 +95,16 @@ for i in ["789/","456*","123+",".0=-"]:
         b=Button(f,text=j,bg="black",fg="white",font="arial 15 bold",relief=RAISED,command=lambda x=j:display(x))
         b.pack(side=LEFT,padx=10,pady=10,expand=YES,fill=BOTH)
     f.pack(padx=10,pady=10,expand=YES,fill=BOTH)
+
+f1=Frame(w,bg="black")
+def Time():
+    while True:
+        label["text"]=time.ctime()
+        time.sleep(1)
+label=Label(f1,font=("arial 20"),justify=RIGHT,bg="black",fg="white",relief=RAISED,bd=2)
+label["text"]=time.ctime()
+label.pack(expand=YES,fill=BOTH)
+f1.pack(expand=YES,fill=BOTH)
+t=threading.Thread(target=Time,daemon=True)
+t.start()
 w.mainloop()
