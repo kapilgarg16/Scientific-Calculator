@@ -11,6 +11,7 @@ def display(x):
         s1=''
         s.set(s1)
     elif x=="DEL":
+        s1=s.get()
         s1=s1[:len(s.get())-1]
         s.set(s1)
     elif x!="=":
@@ -34,18 +35,25 @@ def display(x):
                     s.set(str(factorial(int(s.get()[1:]))))
             elif s1[len(s1)-1] == "!":
                      s.set(str(factorial(int(s.get()[:len(s1)-1]))))
-            elif s1[0:4] == "cosh":
-                s.set(str(cosh(int(s.get()[4:]))))
-            elif s1[0:4] == "sinh":
+            elif s1[:4] == "cosh":
+                s.set(str(cosh((int(s.get()[4:])))))
+            elif s1[:4] == "sinh":
                 s.set(str(sinh(int(s.get()[4:]))))
-            elif s1[0:4] == "tanh":
+            elif s1[:4] == "tanh":
                 s.set(str(tanh(int(s.get()[4:]))))
-            elif s1[0:2]=="e ":
+            elif s1[:2]=="e ":
                 s.set(str(exp(int(s.get()[2:]))))
             elif s1[len(s1)-1:] == "²":
                 s.set(str((int(s.get()[:len(s1)-1]))**2))
-            elif s1[len(s1)-2:]=="X3":
-                s.set(str((int(s.get()[:len(s1)-2]))**3))
+            elif s1[len(s1)-3:]==" x3":
+                s.set(str((int(s.get()[:len(s1)-3]))**3))
+            elif "^"in s1:
+                l=s1.partition("^")
+                s.set(str(int(l[0])**int(l[-1])))
+            elif "c"in s1:
+                l=s1.partition("c")
+                per=factorial(int(l[0]))//(factorial(int(l[0])-int(l[-1]))*factorial(int(l[-1])))
+                s.set(str(per))
             else:
                 s.set(str(eval(s.get())))
         except Exception as e:
@@ -54,27 +62,29 @@ def display(x):
 s1=''
 s=StringVar()
 fe=Frame(w,bg="#123456")
-e=Entry(fe,textvariable=s,font="arial 25 bold",justify=RIGHT)
+e=Entry(fe,textvariable=s,bg="powder blue",font="arial 25 bold",justify=RIGHT)
 e.pack(padx=10,pady=10,expand=YES,fill=BOTH)
 fe.pack(padx=10,pady=10 ,expand=YES,fill=BOTH)
-fe=Frame(w,bg="#123456")
-for i in ["DEL","AC"]:
-    b = Button(fe, text=i, bg="black", fg="white", font="arial 15 bold",relief=RAISED,command =lambda x=i:display(x))
-    b.pack(side=LEFT, padx=5, pady=5, expand=YES, fill=BOTH)
-fe.pack(padx=10,pady=10 ,expand=YES,fill=BOTH)
+
 fe=Frame(w,bg="#123456")
 for i in ["sin","cos","tan","log","eⁿ"]:
-    b = Button(fe, text=i, bg="grey", fg="white", font="arial 10 bold",relief=RAISED,command=lambda x=i if i!="eⁿ" else "e ":display(x))
+    b = Button(fe, text=i, bg="grey", fg="black", font="arial 10 bold",relief=RAISED,command=lambda x=i if i!="eⁿ" else "e ":display(x))
     b.pack(side=LEFT, padx=4, pady=4, expand=YES, fill=BOTH)
 fe.pack(padx=10,pady=10 ,expand=YES,fill=BOTH)
 fe=Frame(w,bg="#123456")
 for i in ["sinh","cosh","tanh","X!","ln"]:
-    b = Button(fe, text=i, bg="grey", fg="white", font="arial 10 bold",relief=RAISED,command=lambda x=i if i!="X!"else "!":display(x))
+    b = Button(fe, text=i, bg="grey", fg="black", font="arial 10 bold",relief=RAISED,command=lambda x=i if i!="X!"else "!":display(x))
     b.pack(side=LEFT, padx=4, pady=4, expand=YES, fill=BOTH)
 fe.pack(padx=10,pady=10 ,expand=YES,fill=BOTH)
 fe=Frame(w,bg="#123456")
-for i in ["X²","X3","^","nCr","√"]:
-    b = Button(fe, text=i, bg="grey", fg="white", font="arial 10 bold",relief=RAISED,command=lambda x=i if i!="X²" else "²" :display(x))
+for i in ["X²"," x3","√","^"]:
+    b = Button(fe, text=i, bg="grey", fg="black", font="arial 10 bold",relief=RAISED,command=lambda x=i if i!="X²" else "²" :display(x))
+    b.pack(side=LEFT, padx=4, pady=4, expand=YES, fill=BOTH)
+fe.pack(padx=10,pady=10 ,expand=YES,fill=BOTH)
+p=iter(["grey","powder blue","powder blue"])
+fe=Frame(w,bg="#123456")
+for i in ["nCr","DEL","AC"]:
+    b = Button(fe, text=i, bg=next(p), fg="black", font="arial 10 bold",relief=RAISED,command=lambda x=i if i!="nCr" else "c" :display(x))
     b.pack(side=LEFT, padx=4, pady=4, expand=YES, fill=BOTH)
 fe.pack(padx=10,pady=10 ,expand=YES,fill=BOTH)
 for i in ["789/","456*","123+",".0=-"]:
