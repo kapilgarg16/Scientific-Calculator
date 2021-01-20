@@ -1,4 +1,4 @@
-This is scientific calculator, which do all type of scientific calculation like trigonometry , root , log, factorial...etc. and display time and date in bottom of calculator.
+This is scientific calculator with GUI, which do all type of scientific calculation like trigonometry , root , log, factorial...etc. and display time and date in bottom of calculator.
 
 Used language : python with TKINTER module
 
