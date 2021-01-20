@@ -1,8 +1,11 @@
-This is scientific calculator with GUI, which do all type of scientific calculation like trigonometry , root , log, factorial...etc. and display time and date in bottom of calculator.
+<strong>Description</strong> -  This is scientific calculator with GUI, which do all type of scientific calculation like trigonometry , root , log, factorial...etc. and display time and date in bottom of calculator.
 
-Used language : python with TKINTER module
+<br>
+<hr>
+<strong>Used language</strong> : python with TKINTER module
 
-
+<br>
+<hr>
 <strong>Source code of project</strong>
 ```markdown
 from tkinter import*
@@ -116,7 +119,7 @@ t=threading.Thread(target=Time,daemon=True)
 t.start()
 w.mainloop()
 ```
-
-done by :
+<hr>
+<strong>done by</strong> :
 Kapil Garg
 https://www.linkedin.com/in/kapil16garg/
