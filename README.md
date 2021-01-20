@@ -3,7 +3,7 @@ This is scientific calculator, which do all type of scientific calculation like 
 Used language : python with TKINTER module
 
 
-Source code of project
+<strong>Source code of project</strong>
 ```markdown
 from tkinter import*
 from math import*
