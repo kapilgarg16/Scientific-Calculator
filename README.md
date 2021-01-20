@@ -1,13 +1,9 @@
-## Welcome to GitHub Pages
+This is scientific calculator, which do all type of scientific calculation like trigonometry , root , log, factorial...etc. and display time and date in bottom of calculator.
 
-You can use the [editor on GitHub](https://github.com/kapilgarg16/Scientific-Calculator/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Used language : python with TKINTER module
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
+Source code of project
 ```markdown
 from tkinter import*
 from math import*
@@ -120,3 +116,7 @@ t=threading.Thread(target=Time,daemon=True)
 t.start()
 w.mainloop()
 ```
+
+done by :
+Kapil Garg
+https://www.linkedin.com/in/kapil16garg/
